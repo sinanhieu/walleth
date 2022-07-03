@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+{% include "title.html" %}
+<br>
+
+<h2>Send Eth</h2>
+<form method="post">
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Sender Address</label>
+            <input name="senderAddress" value="{{senderAddress}}" type="text" class="form-control" id="nameInput"
+                disabled>
+        </div>
+        <div class="mb-3">
+            <label for="addressInput" class="form-label">Receiver Address</label>
+            <input name="receiverAddress" type="text" class="form-control" id="addressInput" placeholder="0xe45d8..."
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="privateKeyInput" class="form-label">Amount</label>
+            <input name="amount" type="number" step="any" class="form-control" id="privateKeyInput" placeholder="0.05"
+                required>
+        </div>
+
+    </div>
+    <div class="d-flex justify-content-end">
+        <a type="button" class="btn btn-danger me-1" href="/">Cancel</a>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+
+{% endblock %}

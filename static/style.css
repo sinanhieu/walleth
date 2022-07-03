@@ -1,0 +1,11 @@
+.title {
+    font-family: 'Titan One', 'cursive';
+}
+
+div.header {
+    margin-top: 1vh;
+}
+
+.title h1 {
+    margin: 0;
+}

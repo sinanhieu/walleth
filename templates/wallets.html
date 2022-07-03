@@ -1,0 +1,38 @@
+{% include "wallet-form.html" %}
+<div class="container">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#wallet-form">Add Wallet</button>
+        <form action="/wallet" method="post">
+            <button class="btn btn-success">Create Wallet</button>
+        </form>
+    </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Public Key</th>
+            <th scope="col">Balance (Eth)</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for wallet in wallets %}
+        <tr>
+            <td class="align-middle">{{wallet.name}}</td>
+            <td class="align-middle">{{wallet.address[:10]}}</td>
+            <td class="align-middle">{{wallet.balance|round(5, "floor")}}</td>
+            <td class="d-flex justify-content-start">
+                <a href="/wallet/{{wallet.id}}/send" class="btn btn-primary me-1" data-bs-toggle="tooltip"
+                    title="Send ETH">⇋</a>
+                <form action="/wallet/{{wallet.id}}/delete" method="post">
+                    <button class="btn btn-danger" data-bs-toggle="tooltip" title="Delete Wallet">🗙</button>
+                </form>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
